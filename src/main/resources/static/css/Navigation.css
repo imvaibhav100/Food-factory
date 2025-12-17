@@ -33,70 +33,77 @@ body, ul {
 
 /* Navigation Bar */
 nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
     background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.95) 100%);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     color: var(--text-light);
-    position: sticky;
-    top: 0;
     z-index: 1000;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
-    padding: 12px 40px;
-    border-bottom: 1px solid var(--glass-border);
+    justify-content: space-between;
+    padding: 0 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Logo */
-.logo {
-    height: 55px;
-    width: 55px;
-    border-radius: 50%;
-    margin-right: 30px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 3px solid transparent;
-    background: linear-gradient(var(--dark-bg), var(--dark-bg)) padding-box,
-                var(--gradient-1) border-box;
-    padding: 2px;
-    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+/* Brand */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ff6b35, #ff9f1c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.logo:hover {
-    transform: scale(1.15) rotate(10deg);
-    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.5);
+.nav-brand i {
+    -webkit-text-fill-color: #ff6b35;
 }
 
 /* Navigation Links */
 ul {
     list-style-type: none;
+    list-style: none;
     display: flex;
+    gap: 5px;
     flex: 1;
-    justify-content: center;
-    gap: 10px;
+    margin: 0 30px;
 }
 
 li {
     margin: 0;
+    display: flex;
 }
 
 a {
     text-decoration: none;
-    color: var(--text-light);
+    color: rgba(255,255,255,0.7);
     font-weight: 500;
     font-size: 15px;
-    position: relative;
     transition: all 0.3s ease;
-    padding: 12px 24px;
-    border-radius: 50px;
-    display: inline-block;
-    letter-spacing: 0.5px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 a:hover {
-    color: var(--text-light);
-    background: var(--gradient-1);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+    color: white;
+    background: rgba(255, 107, 53, 0.2);
+}
+
+a.active {
+    color: white;
+    background: linear-gradient(135deg, #ff6b35, #ff9f1c);
 }
 
 a::before {

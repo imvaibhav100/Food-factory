@@ -48,6 +48,52 @@ public class UserDashboardController {
 		return null;
 	}
 
+	@GetMapping("/home")
+	public String userHome(Model model, HttpSession session) {
+		User currentUser = getCurrentUser(session);
+		if (currentUser == null) {
+			return "redirect:/login";
+		}
+		model.addAttribute("name", currentUser.getUname());
+		model.addAttribute("isLoggedIn", true);
+		return "Home";
+	}
+
+	@GetMapping("/products")
+	public String userProducts(Model model, HttpSession session) {
+		User currentUser = getCurrentUser(session);
+		if (currentUser == null) {
+			return "redirect:/login";
+		}
+		List<Product> allProducts = productServices.getAllProducts();
+		model.addAttribute("products", allProducts);
+		model.addAttribute("name", currentUser.getUname());
+		model.addAttribute("isLoggedIn", true);
+		return "Products";
+	}
+
+	@GetMapping("/location")
+	public String userLocation(Model model, HttpSession session) {
+		User currentUser = getCurrentUser(session);
+		if (currentUser == null) {
+			return "redirect:/login";
+		}
+		model.addAttribute("name", currentUser.getUname());
+		model.addAttribute("isLoggedIn", true);
+		return "Locate_us";
+	}
+
+	@GetMapping("/about")
+	public String userAbout(Model model, HttpSession session) {
+		User currentUser = getCurrentUser(session);
+		if (currentUser == null) {
+			return "redirect:/login";
+		}
+		model.addAttribute("name", currentUser.getUname());
+		model.addAttribute("isLoggedIn", true);
+		return "About";
+	}
+
 	@GetMapping("/dashboard")
 	public String userDashboard(Model model, HttpSession session) {
 		User currentUser = getCurrentUser(session);

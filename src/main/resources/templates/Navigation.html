@@ -8,9 +8,11 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         nav {
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 1000;
+            left: 0;
+            right: 0;
+            height: 70px;
             background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.95) 100%);
             backdrop-filter: blur(20px);
             color: white;
@@ -18,16 +20,20 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px 40px;
+            padding: 0 40px;
+            z-index: 1000;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .logo {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            border: 3px solid transparent;
-            background: linear-gradient(#1a1a2e, #1a1a2e) padding-box, linear-gradient(135deg, #ff6b35, #2ec4b6) border-box;
-            padding: 8px;
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b35, #ff9f1c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         ul {
             list-style: none;
@@ -45,23 +51,74 @@
             transition: all 0.3s;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+            font-weight: 500;
         }
         a:hover {
             color: white;
             background: rgba(255, 107, 53, 0.2);
         }
-        a.active { color: white; border: 2px solid #ff6b35; }
+        a.active { 
+            color: white; 
+            background: linear-gradient(135deg, #ff6b35, #ff9f1c);
+        }
+        .nav-user {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .user-greeting {
+            color: rgba(255,255,255,0.8);
+            font-weight: 500;
+        }
+        .logout-btn {
+            background: rgba(255, 71, 87, 0.2);
+            color: #ff4757;
+            padding: 8px 16px;
+            border: 1px solid rgba(255, 71, 87, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .logout-btn:hover {
+            background: #ff4757;
+            color: white;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body style="display: none;">
-    <nav th:fragment="navbar()">
-        <img th:src="@{/Images/logo.png}" alt="FoodFactory Logo" class="logo">
+    <!-- Logged In Navigation -->
+    <nav th:fragment="navbar()" th:if="${isLoggedIn}">
+        <div class="nav-brand">
+            <i class="fas fa-utensils" style="-webkit-text-fill-color: #ff6b35;"></i>
+            <span>FoodFactory</span>
+        </div>
+        <ul>
+            <li><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/user/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="/user/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a></li>
+            <li><a href="/user/about"><i class="fas fa-info-circle"></i> About</a></li>
+        </ul>
+        <div class="nav-user">
+            <span class="user-greeting"><i class="fas fa-user-circle"></i> <span th:text="${name}">User</span></span>
+            <a href="/user/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </nav>
+
+    <!-- Logged Out Navigation -->
+    <nav th:fragment="navbar()" th:unless="${isLoggedIn}">
+        <div class="nav-brand">
+            <i class="fas fa-utensils" style="-webkit-text-fill-color: #ff6b35;"></i>
+            <span>FoodFactory</span>
+        </div>
         <ul>
             <li><a href="/home"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="/products"><i class="fas fa-utensils"></i> Products</a></li>
             <li><a href="/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a></li>
-            <li><a href="/about"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="/about"><i class="fas fa-info-circle"></i> About</a></li>
             <li><a href="/login"><i class="fas fa-sign-in-alt"></i> Log In</a></li>
         </ul>
     </nav>
