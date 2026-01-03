@@ -7,38 +7,87 @@
 	<title>ADMIN PAGE :</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 	<link rel="stylesheet" href="" th:href="@{/css/Admin_page.css}" />
+	<style>
+		.admin-navbar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 70px;
+			background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.95) 100%);
+			backdrop-filter: blur(20px);
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 40px;
+			z-index: 1000;
+			border-bottom: 1px solid rgba(255,255,255,0.1);
+			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+		}
+		
+		.admin-brand {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			font-size: 1.5rem;
+			font-weight: 700;
+			color: #ff6b35;
+		}
+		
+		.admin-user-info {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+		}
+		
+		.admin-greeting {
+			color: rgba(255,255,255,0.8);
+			font-weight: 500;
+			font-size: 1rem;
+		}
+		
+		.admin-logout-btn {
+			background: rgba(255, 71, 87, 0.2);
+			color: #ff4757;
+			padding: 8px 16px;
+			border: 1px solid rgba(255, 71, 87, 0.3);
+			border-radius: 8px;
+			cursor: pointer;
+			font-weight: 600;
+			text-decoration: none;
+			transition: all 0.3s;
+		}
+		
+		.admin-logout-btn:hover {
+			background: #ff4757;
+			color: white;
+			transform: translateY(-2px);
+		}
+		
+		body {
+			padding-top: 90px;
+		}
+	</style>
 
 </head>
 
 <body>
-	<a class="back" href="/login">Back</a>
+	<!-- Admin Navigation Bar -->
+	<nav class="admin-navbar">
+		<div class="admin-brand">
+			<i class="fas fa-user-shield"></i>
+			<span>Admin Panel</span>
+		</div>
+		<div class="admin-user-info">
+			<span class="admin-greeting">Welcome, Admin</span>
+			<a href="/login" class="admin-logout-btn">
+				<i class="fas fa-sign-out-alt"></i> Logout
+			</a>
+		</div>
+	</nav>
+	
 	<center>
 		<section class="tables">
-			<div class="admins">
-				<h2>Admins :</h2>
-				<table>
-					<tr>
-						<th>Admin_Id</th>
-						<th>Admin_Name</th>
-						<th>Admin_Email</th>
-						<th>Admin_Number</th>
-						<th>Actions</th>
-					</tr>
-					<tr th:each="admin :${admins}">
-						<td th:text="${admin.adminId}"></td>
-						<td th:text="${admin.adminName}"></td>
-						<td th:text="${admin.adminEmail}"></td>
-						<td th:text="${admin.adminNumber}"></td>
-						<td><a style="color: blue;" href="" th:href="@{'/updateAdmin/'+${admin.adminId}}"><i
-									class="fa-solid fa-pen"></i></a><span>&nbsp;</span>
-							<a style="color: red;" href="" th:href="@{'/deleteAdmin/'+${admin.adminId}}"><i
-									class="fa-solid fa-trash"></i></a>
-						</td>
-					</tr>
-				</table>
-				<a href="" class="btns" th:href="@{/addAdmin}">Add_Admin</a>
-			</div>
-
 			<div class="users" th:object="${userObject}">
 				<h2>Users :</h2>
 				<table>
@@ -52,14 +101,11 @@
 						<td th:text="${user.u_id}"></td>
 						<td th:text="${user.uname}"></td>
 						<td th:text="${user.uemail}"></td>
-						<td><a style="color: blue;" href="" th:href="@{'/updateUser/'+${user.u_id}}"><i
-									class="fa-solid fa-pen"></i></a><span>&nbsp;</span>
-							<a style="color: red;" href="" th:href="@{'/deleteUser/'+${user.u_id}}"> <i
-									class="fa-solid fa-trash"></i></a>
+						<td>
+							<a style="color: red;" href="" th:href="@{'/deleteUser/'+${user.u_id}}"> <i class="fa-solid fa-trash"></i></a>
 						</td>
 					</tr>
 				</table>
-				<a href="" class="btns" th:href="@{'/addUser'}">Add_User</a>
 			</div>
 
 

@@ -45,7 +45,12 @@
 
 				   <b><i class="fas fa-lock"></i> Password</b>
 				   <div class="password-wrapper">
-				   <input type="password" th:field="*{upassword}" placeholder="Enter your password" required maxlength="8" minlength="4" class="userPassword" id="userPassword">
+<input type="password"
+       th:field="*{upassword}"
+       placeholder="Enter your password"
+       required
+       class="userPassword"
+       id="userPassword">
 				   <span class="eye-btn" onclick="togglePassword('userPassword', 'userEye')">
 					   <i id="userEye" class="fa fa-eye"></i>
 				   </span>

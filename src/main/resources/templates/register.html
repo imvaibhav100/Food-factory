@@ -2,102 +2,217 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>TEA : REGISTER</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <meta charset="UTF-8">
+    <title>FOODFACTORY | Register</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
+        * {
+            box-sizing: border-box;
         }
 
-        .RegistrationContainer {
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #23243a 0%, #2ec4b6 100%);
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
+            justify-content: center;
         }
 
         .registration {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
-            padding: 20px;
+            background: rgba(24, 26, 38, 0.95);
+            border-radius: 22px;
+            width: 420px;
+            padding: 40px 36px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .registration h2 {
             text-align: center;
-            color: #333;
+            margin-bottom: 26px;
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ff6b35, #ff9f1c, #2ec4b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .registration label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-        }
-
-        .registration input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .registration button {
-            background-color: #4caf50;
+        label {
             color: #fff;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 18px;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ff6b35;
+        }
+
+        .toggle-eye {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
             cursor: pointer;
-            font-size: 16px;
+            color: #ff6b35;
         }
 
-        .registration button:hover {
-            background-color: #45a049;
+        input {
+            width: 100%;
+            padding: 12px 42px;
+            border-radius: 12px;
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            font-size: 1.05rem;
         }
 
-        .registration p {
-            margin-top: 10px;
+        input::placeholder {
+            color: #ff9f1c;
+        }
+
+        input:focus {
+            box-shadow: 0 0 0 2px #ff6b35;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 12px;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(90deg, #ff6b35, #ff9f1c, #2ec4b6);
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .error {
+            color: #ff4757;
             text-align: center;
+            margin-bottom: 10px;
             font-size: 14px;
-            color: #ff0000;
+        }
+
+        .login-link {
+            margin-top: 14px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .login-link a {
+            color: #2ec4b6;
+            text-decoration: none;
+            font-weight: 600;
         }
     </style>
 </head>
 
 <body>
-    <div class="RegistrationContainer">
-        <div class="registration">
-            <div class="content">
-                <h2>Register</h2>
 
+<div class="registration">
 
-            <form th:action="@{/register}" method="post" th:object="${userRegistration}">
+    <h2>Create Account</h2>
 
+    <!-- BACKEND ERROR -->
+    <p class="error" th:if="${error}" th:text="${error}"></p>
 
+    <form th:action="@{/register}" th:object="${user}" method="post" id="registerForm">
 
-                <label for="uname">Username:</label>
-                <input type="text" id="uname" name="uname" th:field="*{uname}" required><br>
-
-                <label for="uemail">Email:</label>
-                <input type="email" id="uemail" name="uemail" th:field="*{uemail}" required><br>
-
-                <label for="upassword">Password:</label>
-                <input type="password" id="upassword" name="upassword" th:field="*{upassword}" required><br>
-
-                <button type="submit">Register</button>
-            </form>
-
-
-                <p th:text="${error}" style="color: red;"></p>
-            </div>
+        <div class="input-group">
+            <label>Username</label>
+            <i class="fa fa-user"></i>
+            <input type="text" th:field="*{uname}" placeholder="Enter username" required>
         </div>
-    </div>
-</body>
 
+        <div class="input-group">
+            <label>Email</label>
+            <i class="fa fa-envelope"></i>
+            <input type="email" th:field="*{uemail}" placeholder="Enter email" required>
+        </div>
+
+        <div class="input-group">
+            <label>Password</label>
+            <i class="fa fa-lock"></i>
+            <input type="password" id="upassword" th:field="*{upassword}"
+                   placeholder="Create password" required>
+            <span class="toggle-eye" onclick="togglePassword('upassword', this)">
+                <i class="fa fa-eye"></i>
+            </span>
+        </div>
+
+        <div class="input-group">
+            <label>Confirm Password</label>
+            <i class="fa fa-lock"></i>
+            <input type="password" id="repassword"
+                   placeholder="Confirm password" required>
+            <span class="toggle-eye" onclick="togglePassword('repassword', this)">
+                <i class="fa fa-eye"></i>
+            </span>
+        </div>
+
+        <p class="error" id="passwordError" style="display:none;"></p>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <div class="login-link">
+        Already have an account? <a th:href="@{/login}">Login</a>
+    </div>
+
+</div>
+
+<script>
+    function togglePassword(id, el) {
+        const input = document.getElementById(id);
+        const icon = el.querySelector('i');
+        if (input.type === "password") {
+            input.type = "text";
+            icon.classList.replace("fa-eye", "fa-eye-slash");
+        } else {
+            input.type = "password";
+            icon.classList.replace("fa-eye-slash", "fa-eye");
+        }
+    }
+
+    document.getElementById("registerForm").addEventListener("submit", function (e) {
+        const pass = document.getElementById("upassword").value;
+        const repass = document.getElementById("repassword").value;
+        const error = document.getElementById("passwordError");
+
+        if (pass !== repass) {
+            error.style.display = "block";
+            error.innerText = "Passwords do not match!";
+            e.preventDefault();
+        }
+    });
+</script>
+
+</body>
 </html>

@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: foodfactory-backend
+    runtime: docker
+    region: oregon
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        scope: run
+        value: ${DATABASE_URL}
+      - key: DB_USER
+        scope: run
+        value: ${DB_USER}
+      - key: DB_PASSWORD
+        scope: run
+        value: ${DB_PASSWORD}
+      - key: PORT
+        scope: run
+        value: 8080
+
+databases:
+  - name: foodfactory-db
+    databaseName: foodfactory
+    user: postgres
+    region: oregon
+    plan: free

@@ -34,14 +34,14 @@ public class DataInitializer implements CommandLineRunner {
         // Snacks (1 item)
         createProduct("Spring Roll", 79.0, "Veg stuffed crispy spring rolls", 
             "/Images/chinese/momo.webp");
-
+            
         // Chinese Items (7 items - only veg)
         createProduct("Hakka Noodles", 160.0, "Stir-fried noodles with vegetables and sauces", 
             "/Images/chinese/chowmein.jpg");
         createProduct("Veg Manchurian", 180.0, "Crispy vegetable balls in spicy gravy", 
             "/Images/chinese/Fried-rice-manchurian.jpg");
         createProduct("Veg Fried Rice", 150.0, "Flavorful fried rice with vegetables", 
-            "/Images/chinese/Fried-rice-manchurian.jpg");
+            "/Images/biryani/veg-biryani.jpg");
         createProduct("Veg Chowmein", 149.0, "Stir-fried noodles with mixed vegetables", 
             "/Images/chinese/chowmein.jpg");
         createProduct("Schezwan Noodles", 119.0, "Spicy noodles with veggies and Schezwan sauce", 
@@ -136,3 +136,4 @@ public class DataInitializer implements CommandLineRunner {
         System.out.println("Created product: " + name);
     }
 }
+
