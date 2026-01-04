@@ -1,44 +1,74 @@
 /* MOBILE RESPONSIVE STYLESHEET */
 /* Add this to your HTML head or import in existing CSS */
 
+/* IMPROVED NAVBAR MOBILE STYLES */
 @media (max-width: 768px) {
-    /* Navigation */
+    /* Navigation - Mobile First Approach */
     nav {
-        padding: 0 15px !important;
-        height: 60px !important;
+        padding: 0 12px !important;
+        height: 55px !important;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
     .nav-brand {
-        font-size: 1.2rem !important;
+        font-size: 1rem !important;
+        gap: 5px !important;
     }
 
     .logo {
-        width: 40px !important;
-        height: 40px !important;
+        width: 35px !important;
+        height: 35px !important;
     }
 
     ul {
-        gap: 0px !important;
-        margin: 0 10px !important;
+        gap: 2px !important;
+        margin: 0 5px !important;
+        flex: 0 1 auto;
+    }
+
+    li {
+        display: flex !important;
     }
 
     a {
-        padding: 8px 10px !important;
-        font-size: 0.9rem !important;
+        padding: 6px 8px !important;
+        font-size: 0.75rem !important;
+        border-radius: 6px !important;
     }
 
-    /* Hide text labels on mobile, show icons */
-    a span {
-        display: none;
+    /* Better navbar layout */
+    .nav-brand,
+    ul,
+    .nav-user {
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .nav-brand {
+        flex: 1;
+        min-width: max-content;
+    }
+
+    /* Hide some nav items on very small screens */
+    ul li:nth-child(n+3) {
+        display: none !important;
     }
 
     .nav-user {
-        gap: 10px !important;
+        gap: 8px !important;
+        margin-left: auto;
     }
 
     .user-greeting {
-        display: none;
+        display: none !important;
     }
+
+    .logout-btn {
+        padding: 5px 10px !important;
+        font-size: 0.7rem !important;
+    }
+
 
     /* Hero Section */
     .hero {
