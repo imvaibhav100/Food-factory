@@ -180,8 +180,8 @@
     </style>
 </head>
 <body style="display: none;">
-    <!-- Single Navigation with Conditional Content -->
-    <nav th:fragment="navbar()">
+    <!-- Single Navigation Fragment - Without nav tag since pages provide it -->
+    <div th:fragment="navbar()">
         <div class="nav-brand">
             <i class="fas fa-utensils" style="-webkit-text-fill-color: #ff6b35;"></i>
             <span>FoodFactory</span>
@@ -234,7 +234,7 @@
                 <a href="/login"><i class="fas fa-sign-in-alt"></i> Log In</a>
             </div>
         </div>
-    </nav>
+    </div>
 
     <script>
         function toggleMenu() {
