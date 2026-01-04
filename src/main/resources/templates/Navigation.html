@@ -98,23 +98,24 @@
             display: none;
             flex-direction: column;
             cursor: pointer;
-            gap: 6px;
+            gap: 5px;
+            padding: 10px;
         }
         .hamburger span {
-            width: 28px;
+            width: 25px;
             height: 3px;
             background: #ff6b35;
             border-radius: 2px;
             transition: all 0.3s ease;
         }
         .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(10px, 10px);
+            transform: rotate(45deg) translate(8px, 8px);
         }
         .hamburger.active span:nth-child(2) {
             opacity: 0;
         }
         .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
+            transform: rotate(-45deg) translate(7px, -7px);
         }
 
         /* Mobile Menu */
@@ -134,19 +135,24 @@
             overflow-y: auto;
         }
         .mobile-menu.active {
-            display: flex;
+            display: flex !important;
         }
         .mobile-menu a {
             padding: 16px 20px;
             color: rgba(255,255,255,0.7);
             border-bottom: 1px solid rgba(255,255,255,0.05);
             margin: 0;
+            text-decoration: none;
         }
         .mobile-menu a:hover {
             background: rgba(255, 107, 53, 0.2);
+            color: white;
         }
-        .mobile-menu a.active {
-            background: linear-gradient(135deg, #ff6b35, #ff9f1c);
+        .mobile-menu a.logout-btn {
+            background: rgba(255, 71, 87, 0.2);
+            color: #ff4757;
+            margin: 10px 20px;
+            border-radius: 8px;
         }
 
         /* Responsive */
@@ -156,61 +162,40 @@
                 height: 60px;
             }
             .nav-brand {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
             .hamburger {
-                display: flex;
+                display: flex !important;
             }
             .nav-container {
-                display: none;
+                display: none !important;
             }
             .nav-user {
-                display: none;
+                display: none !important;
+            }
+            .mobile-menu {
+                top: 60px;
             }
         }
     </style>
 </head>
 <body style="display: none;">
-    <!-- Logged In Navigation -->
-    <nav th:fragment="navbar()" th:if="${isLoggedIn}">
+    <!-- Single Navigation with Conditional Content -->
+    <nav th:fragment="navbar()">
         <div class="nav-brand">
             <i class="fas fa-utensils" style="-webkit-text-fill-color: #ff6b35;"></i>
             <span>FoodFactory</span>
         </div>
+        
+        <!-- Desktop Menu -->
         <div class="nav-container">
-            <ul>
+            <ul th:if="${isLoggedIn}">
                 <li><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="/user/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li><a href="/user/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a></li>
                 <li><a href="/user/about"><i class="fas fa-info-circle"></i> About</a></li>
             </ul>
-        </div>
-        <div class="nav-user">
-            <span class="user-greeting"><i class="fas fa-user-circle"></i> <span th:text="${name}">User</span></span>
-            <a href="/user/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
-        </div>
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="/user/home"><i class="fas fa-home"></i> Home</a>
-            <a href="/user/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-            <a href="/user/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a>
-            <a href="/user/about"><i class="fas fa-info-circle"></i> About</a>
-            <a href="/user/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
-        </div>
-    </nav>
-
-    <!-- Logged Out Navigation -->
-    <nav th:fragment="navbar()" th:unless="${isLoggedIn}">
-        <div class="nav-brand">
-            <i class="fas fa-utensils" style="-webkit-text-fill-color: #ff6b35;"></i>
-            <span>FoodFactory</span>
-        </div>
-        <div class="nav-container">
-            <ul>
+            <ul th:unless="${isLoggedIn}">
                 <li><a href="/home"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="/products"><i class="fas fa-utensils"></i> Products</a></li>
                 <li><a href="/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a></li>
@@ -218,17 +203,36 @@
                 <li><a href="/login"><i class="fas fa-sign-in-alt"></i> Log In</a></li>
             </ul>
         </div>
+        
+        <!-- User Section (Desktop) -->
+        <div class="nav-user" th:if="${isLoggedIn}">
+            <span class="user-greeting"><i class="fas fa-user-circle"></i> <span th:text="${name}">User</span></span>
+            <a href="/user/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+        
+        <!-- Hamburger Menu -->
         <div class="hamburger" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
         </div>
+        
+        <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobileMenu">
-            <a href="/home"><i class="fas fa-home"></i> Home</a>
-            <a href="/products"><i class="fas fa-utensils"></i> Products</a>
-            <a href="/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a>
-            <a href="/about"><i class="fas fa-info-circle"></i> About</a>
-            <a href="/login"><i class="fas fa-sign-in-alt"></i> Log In</a>
+            <div th:if="${isLoggedIn}">
+                <a href="/user/home"><i class="fas fa-home"></i> Home</a>
+                <a href="/user/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="/user/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a>
+                <a href="/user/about"><i class="fas fa-info-circle"></i> About</a>
+                <a href="/user/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+            <div th:unless="${isLoggedIn}">
+                <a href="/home"><i class="fas fa-home"></i> Home</a>
+                <a href="/products"><i class="fas fa-utensils"></i> Products</a>
+                <a href="/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a>
+                <a href="/about"><i class="fas fa-info-circle"></i> About</a>
+                <a href="/login"><i class="fas fa-sign-in-alt"></i> Log In</a>
+            </div>
         </div>
     </nav>
 
@@ -254,5 +258,6 @@
         });
     </script>
 </body>
+</html>
 
 
