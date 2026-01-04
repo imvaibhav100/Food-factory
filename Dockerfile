@@ -19,4 +19,5 @@ EXPOSE 8080
 
 ENV PORT=8080
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# JVM Optimizations for faster startup on limited resources
+ENTRYPOINT ["java", "-Xmx512m", "-XX:+TieredCompilation", "-XX:TieredStopAtLevel=1", "-jar", "app.jar"]
