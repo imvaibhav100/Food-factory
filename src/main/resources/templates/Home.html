@@ -4,333 +4,243 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>FoodFactory - Delicious Vegetarian Food</title>
+	<title>FoodFactory - Modern Vegetarian Dining</title>
 	<link rel="icon" type="image/x-icon" href="./Images/logo.png">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-	<link rel="stylesheet" href="./css/responsive.css">
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
-		:root {
-			--primary-color: #ff6b35;
-			--secondary-color: #2ec4b6;
-			--dark-bg: #0f0f1a;
-			--card-bg: rgba(255, 255, 255, 0.05);
-			--glass-border: rgba(255, 255, 255, 0.1);
-		}
-
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
-
-		html, body {
-			font-family: 'Poppins', sans-serif;
-			overflow-x: hidden;
-			min-height: 100vh;
-			background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f1a 100%);
-			color: white;
-			width: 100%;
-		}
-
-	/* Hero Section */
-	.hero {
-		min-height: calc(100vh - 70px);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 40px 20px;
-			padding-top: 110px;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(46, 196, 182, 0.05) 100%);
-		z-index: 1;
-	}
-
-	.hero-content {
-		position: relative;
-		z-index: 2;
-		text-align: center;
-		max-width: 900px;
-		animation: fadeInUp 0.8s ease-out;
-	}
-
-	@keyframes fadeInUp {
-		from {
-			opacity: 0;
-			transform: translateY(30px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	.hero h1 {
-		font-size: clamp(2.5rem, 8vw, 5rem);
-		font-weight: 800;
-		margin-bottom: 20px;
-		background: linear-gradient(135deg, #ff6b35 0%, #ff9f1c 50%, #2ec4b6 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-	}
-
-	.hero p {
-		font-size: clamp(1rem, 2vw, 1.5rem);
-		color: rgba(255, 255, 255, 0.8);
-		margin-bottom: 40px;
-		line-height: 1.8;
-		font-weight: 300;
-	}
-
-	.cta-buttons {
-		display: flex;
-		gap: 20px;
-		justify-content: center;
-		flex-wrap: wrap;
-		margin-bottom: 60px;
-	}
-
-	.cta-btn {
-		display: inline-flex;
-		align-items: center;
-		gap: 10px;
-		padding: 16px 40px;
-		background: linear-gradient(135deg, #ff6b35, #ff9f1c);
-		border: none;
-		border-radius: 50px;
-		color: white;
-		font-size: 1rem;
-		font-weight: 600;
-		text-decoration: none;
-		cursor: pointer;
-		transition: all 0.4s ease;
-		box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
-	}
-
-	.cta-btn:hover {
-		transform: translateY(-5px);
-		box-shadow: 0 20px 50px rgba(255, 107, 53, 0.5);
-	}
-
-	.cta-btn-secondary {
-		background: transparent;
-		border: 2px solid var(--secondary-color);
-		color: var(--secondary-color);
-	}
-
-	.cta-btn-secondary:hover {
-		background: var(--secondary-color);
-		color: #000;
-	}
-
-	/* Features Section */
-	.features {
-		padding: 80px 20px;
-		max-width: 1400px;
-		margin: 0 auto;
-	}
-
-	.section-title {
-		text-align: center;
-		font-size: 2.5rem;
-		margin-bottom: 15px;
-		background: linear-gradient(135deg, #2ec4b6, #3de0d0);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		font-weight: 700;
-	}
-
-	.section-subtitle {
-		text-align: center;
-		color: rgba(255, 255, 255, 0.6);
-		margin-bottom: 50px;
-		font-size: 1.1rem;
-	}
-
-	.features-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		gap: 30px;
-	}
-
-	.feature-card {
-		background: var(--card-bg);
-		backdrop-filter: blur(20px);
-		border: 1px solid var(--glass-border);
-		border-radius: 20px;
-		padding: 40px;
-		text-align: center;
-		transition: all 0.4s ease;
-	}
-
-	.feature-card:hover {
-		transform: translateY(-10px);
-		border-color: var(--primary-color);
-		box-shadow: 0 20px 50px rgba(255, 107, 53, 0.3);
-	}
-
-	.feature-icon {
-		font-size: 3rem;
-		color: var(--primary-color);
-		margin-bottom: 20px;
-	}
-
-	.feature-card h3 {
-		font-size: 1.5rem;
-		margin-bottom: 15px;
-	}
-
-	.feature-card p {
-		color: rgba(255, 255, 255, 0.6);
-		line-height: 1.6;
-	}
-
-	/* Footer */
-	.footer {
-		background: rgba(0, 0, 0, 0.3);
-		padding: 40px 20px;
-		text-align: center;
-		border-top: 1px solid var(--glass-border);
-	}
-
-	.footer p {
-		color: rgba(255, 255, 255, 0.6);
-	}
-
-	/* Responsive */
-	@media (max-width: 768px) {
-		.hero {
-			min-height: calc(100vh - 70px);
-		}
-
-		.hero h1 {
-			margin-bottom: 15px;
-		}
-
-		.cta-buttons {
-			flex-direction: column;
-			gap: 15px;
-		}
-
-		.cta-btn {
-			width: 100%;
-			justify-content: center;
-		}
-	}
-</style>
+	<link rel="stylesheet" th:href="@{/css/responsive.css}">
+	<link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
 
 <body>
 	<!-- Navbar for Logged-in Users -->
-	<nav th:if="${isLoggedIn}" style="position: fixed; top: 0; left: 0; right: 0; height: 70px; background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.95) 100%); backdrop-filter: blur(20px); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
-		<div style="display: flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: 700; background: linear-gradient(135deg, #ff6b35, #ff9f1c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-			<i class="fas fa-utensils" style="-webkit-text-fill-color: #ff6b35;"></i>
+	<nav th:if="${isLoggedIn}" class="navbar navbar-logged-in">
+		<div class="navbar-logo">
+			<i class="fas fa-utensils"></i>
 			<span>FoodFactory</span>
 		</div>
-		<ul style="display: flex; list-style: none; gap: 5px; flex: 1; margin: 0 30px;">
-			<li><a href="/user/home" style="color: #fff; text-decoration: none; padding: 10px 15px; border-radius: 8px; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; font-weight: 500; background: linear-gradient(135deg, #ff6b35, #ff9f1c);"><i class="fas fa-home"></i> Home</a></li>
-			<li><a href="/user/dashboard" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 10px 15px; border-radius: 8px; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; font-weight: 500;"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-			<li><a href="/user/location" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 10px 15px; border-radius: 8px; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; font-weight: 500;"><i class="fas fa-map-marker-alt"></i> Locate Us</a></li>
-			<li><a href="/user/about" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 10px 15px; border-radius: 8px; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; font-weight: 500;"><i class="fas fa-info-circle"></i> About</a></li>
+		<ul class="navbar-menu">
+			<li><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+			<li><a href="/user/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+			<li><a href="/user/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a></li>
+			<li><a href="/user/about"><i class="fas fa-info-circle"></i> About</a></li>
 		</ul>
-		<div style="display: flex; align-items: center; gap: 15px;">
-			<span style="color: rgba(255,255,255,0.8); font-weight: 500; display: flex; align-items: center; gap: 8px;">
+		<div class="navbar-user-menu">
+			<span class="navbar-user-info">
 				<i class="fas fa-user-circle"></i> <span th:text="${name}">User</span>
 			</span>
-			<a href="/user/logout" style="background: rgba(255, 71, 87, 0.2); color: #ff4757; padding: 8px 16px; border: 1px solid rgba(255, 71, 87, 0.3); border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+			<a href="/user/logout" class="navbar-logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+		</div>
+
+		<button class="hamburger" onclick="toggleMenu()">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+
+		<div class="mobile-menu" id="mobileMenu">
+			<a href="/user/home"><i class="fas fa-home"></i> Home</a>
+			<a href="/user/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+			<a href="/user/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a>
+			<a href="/user/about"><i class="fas fa-info-circle"></i> About</a>
+			<a href="/user/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
 		</div>
 	</nav>
 
-	<nav th:unless="${isLoggedIn}" style="position: sticky; top: 0; z-index: 1000; background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.95) 100%); backdrop-filter: blur(20px); color: white; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); display: flex; align-items: center; justify-content: space-between; padding: 12px 40px; border-bottom: 1px solid rgba(255,255,255,0.1);">
-		<div style="display: flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: 700; background: linear-gradient(135deg, #ff6b35, #ff9f1c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-			<i class="fas fa-utensils" style="-webkit-text-fill-color: #ff6b35;"></i>
+	<nav th:unless="${isLoggedIn}" class="navbar">
+		<div class="navbar-logo">
+			<i class="fas fa-utensils"></i>
 			<span>FoodFactory</span>
 		</div>
-		<ul style="list-style: none; display: flex; gap: 5px; flex: 1; margin: 0 30px;">
-			<li><a href="/home" style="color: #fff; text-decoration: none; padding: 10px 15px; border-radius: 8px; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; font-weight: 500; background: linear-gradient(135deg, #ff6b35, #ff9f1c);"><i class="fas fa-home"></i> Home</a></li>
-			<li><a href="/products" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 10px 15px; border-radius: 8px; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; font-weight: 500;"><i class="fas fa-utensils"></i> Products</a></li>
-			<li><a href="/location" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 10px 15px; border-radius: 8px; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; font-weight: 500;"><i class="fas fa-map-marker-alt"></i> Locate Us</a></li>
-			<li><a href="/about" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 10px 15px; border-radius: 8px; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; font-weight: 500;"><i class="fas fa-info-circle"></i> About</a></li>
-			<li><a href="/login" style="color: rgba(255,255,255,0.7); text-decoration: none; padding: 10px 15px; border-radius: 8px; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; font-weight: 500;"><i class="fas fa-sign-in-alt"></i> Log In</a></li>
+		<ul class="navbar-menu">
+			<li><a href="/home"><i class="fas fa-home"></i> Home</a></li>
+			<li><a href="/products"><i class="fas fa-utensils"></i> Products</a></li>
+			<li><a href="/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a></li>
+			<li><a href="/about"><i class="fas fa-info-circle"></i> About</a></li>
+			<li><a href="/login"><i class="fas fa-sign-in-alt"></i> Log In</a></li>
 		</ul>
+
+		<!-- Hamburger Menu Button -->
+		<button class="hamburger" onclick="toggleMenu()">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+
+		<!-- Mobile Menu Overlay -->
+		<div class="mobile-menu" id="mobileMenu">
+			<a href="/home"><i class="fas fa-home"></i> Home</a>
+			<a href="/products"><i class="fas fa-utensils"></i> Products</a>
+			<a href="/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a>
+			<a href="/about"><i class="fas fa-info-circle"></i> About</a>
+			<a href="/login"><i class="fas fa-sign-in-alt"></i> Log In</a>
+		</div>
 	</nav>
 
-	<!-- Hero Section -->
-	<div class="hero">
-		<div class="hero-content">
-			<h1>🌿 FoodFactory</h1>
-			<p>100% Pure Vegetarian Delights<br>Crafted with Love & Finest Ingredients</p>
-			
-			<div class="cta-buttons">
-				<a href="/user/products" th:if="${isLoggedIn}" class="cta-btn">
-					<i class="fas fa-utensils"></i> Browse Menu
-				</a>
-				<a href="/products" th:unless="${isLoggedIn}" class="cta-btn">
-					<i class="fas fa-utensils"></i> Explore Menu
-				</a>
-				<a href="/about" class="cta-btn cta-btn-secondary">
-					<i class="fas fa-info-circle"></i> Learn More
-				</a>
+	<main class="page-shell">
+		<section class="hero">
+			<div class="hero-copy">
+				<div class="eyebrow">Pure Veg · Crafted Fresh</div>
+				<h1><span class="glow">FoodFactory</span> brings a modern take on soulful vegetarian food</h1>
+				<p class="lede">A bold menu of North Indian classics, wok-fresh Chinese and iconic paneer favorites—prepared with zero compromise on purity.</p>
+				<div class="hero-ctas">
+					<a href="/user/products" th:if="${isLoggedIn}" class="btn primary"><i class="fas fa-bowl-food"></i> Order now</a>
+					<a href="/products" th:unless="${isLoggedIn}" class="btn primary"><i class="fas fa-bowl-food"></i> Explore menu</a>
+					<a href="/about" class="btn ghost"><i class="fas fa-leaf"></i> Our story</a>
+				</div>
+				<div class="hero-metrics">
+					<div class="metric">
+						<span class="metric-value">150+</span>
+						<span class="metric-label">Veg dishes curated</span>
+					</div>
+					<div class="metric">
+						<span class="metric-value">18 min</span>
+						<span class="metric-label">Average prep time</span>
+					</div>
+					<div class="metric">
+						<span class="metric-value">4.9★</span>
+						<span class="metric-label">Loved by our guests</span>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
+			<div class="hero-visual">
+				<div class="floating-card">
+					<div class="card-head">
+						<div class="pill soft">Fresh • Zero Onion-Garlic on request</div>
+						<div class="stamp">100% Veg</div>
+					</div>
+					<h3>Today’s cravings</h3>
+					<ul class="cravings">
+						<li><span class="dot green"></span> Smoked Paneer Tikka with mint chimichurri</li>
+						<li><span class="dot amber"></span> Chilli Garlic Noodles tossed to order</li>
+						<li><span class="dot teal"></span> Creamy Dal Makhani slow-simmered overnight</li>
+					</ul>
+					<div class="mini-grid">
+						<div class="chip"><i class="fas fa-truck"></i> Express delivery</div>
+						<div class="chip"><i class="fas fa-seedling"></i> Farm-fresh produce</div>
+					</div>
+				</div>
+				<div class="backdrop-blobs" aria-hidden="true"></div>
+			</div>
+		</section>
 
-	<!-- Features Section -->
-	<section class="features">
-		<h2 class="section-title">Why Choose Us?</h2>
-		<p class="section-subtitle">Experience the best in vegetarian cuisine</p>
-		
-		<div class="features-grid">
-			<div class="feature-card">
-				<div class="feature-icon"><i class="fas fa-leaf"></i></div>
-				<h3>100% Vegetarian</h3>
-				<p>Pure vegetarian menu with no compromises on taste and quality</p>
+		<section class="feature-stack">
+			<div class="section-head">
+				<h2>Why FoodFactory</h2>
+				<p>Designed like a boutique kitchen: bold flavors, clean ingredients, mindful prep.</p>
 			</div>
-			
-			<div class="feature-card">
-				<div class="feature-icon"><i class="fas fa-star"></i></div>
-				<h3>Premium Quality</h3>
-				<p>Fresh ingredients sourced daily for the best flavor</p>
+			<div class="feature-grid">
+				<div class="feature-card">
+					<i class="fas fa-leaf"></i>
+					<h3>Pure veg ethos</h3>
+					<p>Dedicated vegetarian kitchen, separate prep lines, and Jain-friendly options.</p>
+				</div>
+				<div class="feature-card">
+					<i class="fas fa-fire"></i>
+					<h3>Live wok heat</h3>
+					<p>Stir-fried to order so every bite keeps that just-off-the-pan sizzle.</p>
+				</div>
+				<div class="feature-card">
+					<i class="fas fa-battery-full"></i>
+					<h3>High-energy meals</h3>
+					<p>Balanced plates with protein-rich paneer, dals, and greens.</p>
+				</div>
+				<div class="feature-card">
+					<i class="fas fa-heart"></i>
+					<h3>Crafted with care</h3>
+					<p>Signature marinades, slow ferments, and hand-ground spices.</p>
+				</div>
 			</div>
-			
-			<div class="feature-card">
-				<div class="feature-icon"><i class="fas fa-bolt"></i></div>
-				<h3>Fast Delivery</h3>
-				<p>Quick service without compromising on quality</p>
-			</div>
-			
-			<div class="feature-card">
-				<div class="feature-icon"><i class="fas fa-heart"></i></div>
-				<h3>Customer Love</h3>
-				<p>Loved by thousands of happy customers worldwide</p>
-			</div>
-			
-			<div class="feature-card">
-				<div class="feature-icon"><i class="fas fa-utensils"></i></div>
-				<h3>Diverse Menu</h3>
-				<p>North Indian, Chinese, Paneer dishes and much more</p>
-			</div>
-			
-			<div class="feature-card">
-				<div class="feature-icon"><i class="fas fa-phone"></i></div>
-				<h3>24/7 Support</h3>
-				<p>Always here to help with your questions and orders</p>
-			</div>
-		</div>
-	</section>
+		</section>
 
-	<!-- Footer -->
-	<div class="footer">
-		<h4 style="margin-bottom: 15px; color: var(--primary-color);">FoodFactory</h4>
-		<p>Your destination for 100% pure vegetarian food</p>
+		<section class="assurance">
+			<div class="assurance-card">
+				<i class="fas fa-shield-heart"></i>
+				<div>
+					<h4>Safe kitchens</h4>
+					<p>Daily sanitation, glove-only plating, temperature-controlled storage.</p>
+				</div>
+			</div>
+			<div class="assurance-card">
+				<i class="fas fa-recycle"></i>
+				<div>
+					<h4>Eco packaging</h4>
+					<p>Compostable boxes and cutlery; less plastic, more taste.</p>
+				</div>
+			</div>
+			<div class="assurance-card">
+				<i class="fas fa-clock"></i>
+				<div>
+					<h4>On-time promise</h4>
+					<p>Smart batching + heat seals to keep your food hot and intact.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="menu-preview">
+			<div class="section-head">
+				<h2>Chef-picked drops</h2>
+				<p>Small-batch specials that rotate every week.</p>
+			</div>
+			<div class="menu-grid">
+				<div class="menu-card">
+					<div class="tag">Tandoor</div>
+					<h3>Charred Paneer Platter</h3>
+					<p>Smoky tikka, hariyali spice rub, and a cool yogurt drizzle.</p>
+					<a href="/products" class="text-link">Add to order</a>
+				</div>
+				<div class="menu-card">
+					<div class="tag">Street Fav</div>
+					<h3>Bombay Chaat Stack</h3>
+					<p>Layered papdi, tangy chutneys, and house-made sev for crunch.</p>
+					<a href="/products" class="text-link">Add to order</a>
+				</div>
+				<div class="menu-card">
+					<div class="tag">Comfort</div>
+					<h3>Dal Makhani Bowl</h3>
+					<p>16-hour simmer, smoked butter finish, paired with soft phulkas.</p>
+					<a href="/products" class="text-link">Add to order</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="process">
+			<div class="section-head">
+				<h2>How we prep</h2>
+				<p>From sourcing to plating, every step is intentional.</p>
+			</div>
+			<div class="process-steps">
+				<div class="step">
+					<div class="step-icon"><i class="fas fa-seedling"></i></div>
+					<div>
+						<h4>Farm-first sourcing</h4>
+						<p>Seasonal veggies arrive in chilled crates every morning.</p>
+					</div>
+				</div>
+				<div class="step">
+					<div class="step-icon"><i class="fas fa-blender"></i></div>
+					<div>
+						<h4>Signature prep</h4>
+						<p>House spice blends, live wok finishing, balanced oils.</p>
+					</div>
+				</div>
+				<div class="step">
+					<div class="step-icon"><i class="fas fa-box"></i></div>
+					<div>
+						<h4>Heat-lock packing</h4>
+						<p>Insulated, compostable packs that keep aromas intact.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="footer">
+		<h4 class="footer-title">FoodFactory</h4>
+		<p>Your destination for modern, 100% vegetarian food.</p>
 		<p>© 2025 FoodFactory. All rights reserved.</p>
-	</div>
+	</footer>
+
+	<script th:src="@{/JavaScript/home.js}"></script>
 </body>
 
 </html>

@@ -15,6 +15,7 @@ public class OrderServices {
 	private OrderRepository orderRepository;
 
 	public List<Orders> getOrders() {
+		@SuppressWarnings("unchecked")
 		List<Orders> list = this.orderRepository.findAll();
 		return list;
 	}

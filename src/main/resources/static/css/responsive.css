@@ -4,71 +4,75 @@
 /* IMPROVED NAVBAR MOBILE STYLES */
 @media (max-width: 768px) {
     /* Navigation - Mobile First Approach */
-    nav {
-        padding: 0 12px !important;
+    /* ============================= */
+    /* MOBILE NAVBAR FIX (FINAL)     */
+    /* ============================= */
+
+    /* NAVBAR BASE */
+    nav,
+    .navbar,
+    .navbar-logged-in,
+    .user-nav {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
         height: 55px !important;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        padding: 0 14px !important;
+        flex-wrap: nowrap;
+    }
+
+    /* LOGO LEFT */
+    .navbar-logo,
+    .nav-brand {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        order: 1 !important;
+        flex-shrink: 0 !important;
     }
 
     .nav-brand {
         font-size: 1rem !important;
-        gap: 5px !important;
     }
 
     .logo {
-        width: 35px !important;
-        height: 35px !important;
+        width: 36px !important;
+        height: 36px !important;
     }
 
-    ul {
-        gap: 2px !important;
-        margin: 0 5px !important;
-        flex: 0 1 auto;
-    }
-
-    li {
+    /* HAMBURGER RIGHT */
+    .hamburger {
         display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        gap: 4px !important;
+        width: 34px !important;
+        height: 26px !important;
+        margin-left: auto !important;
+        order: 2 !important;
+        cursor: pointer;
     }
 
-    a {
-        padding: 6px 8px !important;
-        font-size: 0.75rem !important;
-        border-radius: 6px !important;
+    .hamburger span {
+        height: 3px;
+        width: 100%;
+        background-color: #ff9f1c;
+        border-radius: 3px;
+        display: block;
     }
 
-    /* Better navbar layout */
-    .nav-brand,
+    /* HIDE DESKTOP MENU */
     ul,
-    .nav-user {
-        display: flex !important;
-        align-items: center !important;
-    }
-
-    .nav-brand {
-        flex: 1;
-        min-width: max-content;
-    }
-
-    /* Hide some nav items on very small screens */
-    ul li:nth-child(n+3) {
+    .navbar-menu,
+    .nav-links {
         display: none !important;
     }
 
+    /* HIDE DESKTOP USER MENU ON MOBILE */
+    .navbar-user-menu,
     .nav-user {
-        gap: 8px !important;
-        margin-left: auto;
-    }
-
-    .user-greeting {
         display: none !important;
     }
-
-    .logout-btn {
-        padding: 5px 10px !important;
-        font-size: 0.7rem !important;
-    }
-
 
     /* Hero Section */
     .hero {
@@ -83,67 +87,63 @@
 
     .hero h1 {
         font-size: 1.8rem !important;
-        margin-bottom: 15px;
-    }
+        @media (max-width: 480px) {
 
-    .hero p {
-        font-size: 0.95rem !important;
-        margin-bottom: 25px;
-    }
+            nav {
+                height: 50px !important;
+                padding: 0 10px !important;
+            }
 
-    .cta-buttons {
-        gap: 10px !important;
-    }
+            .logo {
+                width: 32px !important;
+                height: 32px !important;
+            }
 
-    .cta-btn {
-        padding: 10px 20px !important;
-        font-size: 0.9rem !important;
-    }
+            a {
+                padding: 5px 8px !important;
+                font-size: 0.8rem !important;
+            }
 
-    /* Main Container */
-    .main-container {
-        padding: 80px 15px 30px !important;
-    }
+            .hero h1 {
+                font-size: 1.4rem !important;
+            }
 
-    /* Grid Layouts - Products */
-    .products-grid, .admin-grid, .product-grid {
-        grid-template-columns: 1fr !important;
-    }
+            .hero p {
+                font-size: 0.85rem !important;
+            }
 
-    .product-card, .admin-card {
-        padding: 15px !important;
-    }
+            .cta-btn {
+                padding: 8px 16px !important;
+                font-size: 0.8rem !important;
+            }
 
-    .product-image, .admin-image {
-        height: 200px !important;
-    }
+            .main-container {
+                padding: 70px 10px 20px !important;
+            }
 
-    /* Tables - Convert to cards on mobile */
-    table {
-        display: block !important;
-        overflow-x: auto !important;
-        font-size: 0.85rem !important;
-    }
+            .page-header h1 {
+                font-size: 1.2rem !important;
+            }
 
-    thead {
-        display: none !important;
-    }
+            table {
+                font-size: 0.75rem !important;
+            }
 
-    tbody, tr, td {
-        display: block !important;
-        width: 100% !important;
-    }
+            input, textarea, select {
+                padding: 10px !important;
+                font-size: 0.95rem !important;
+            }
 
-    tr {
-        margin-bottom: 20px !important;
-        border: 1px solid rgba(255,255,255,0.1) !important;
-        padding: 15px !important;
-        border-radius: 8px;
-    }
+            button {
+                padding: 10px !important;
+                font-size: 0.9rem !important;
+            }
 
-    td {
-        padding: 8px 0 !important;
-        text-align: right !important;
+            .logout-btn {
+                padding: 6px 12px !important;
+                font-size: 0.8rem !important;
+            }
+        }
     }
 
     td:before {
@@ -318,6 +318,20 @@
     a {
         padding: 8px 12px !important;
         font-size: 0.95rem !important;
+    }
+}
+
+/* DESKTOP RESET (SAFE) */
+@media (min-width: 769px) {
+
+    .hamburger {
+        display: none !important;
+    }
+
+    ul,
+    .navbar-menu,
+    .nav-links {
+        display: flex !important;
     }
 }
 

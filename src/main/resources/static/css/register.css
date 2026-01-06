@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #23243a 0%, #2ec4b6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.registration {
+    background: rgba(24, 26, 38, 0.95);
+    border-radius: 22px;
+    width: 420px;
+    padding: 40px 36px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.registration h2 {
+    text-align: center;
+    margin-bottom: 26px;
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #ff6b35, #ff9f1c, #2ec4b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+label {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 18px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff6b35;
+}
+
+.toggle-eye {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #ff6b35;
+}
+
+input {
+    width: 100%;
+    padding: 12px 42px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 1.05rem;
+}
+
+input::placeholder {
+    color: #ff9f1c;
+}
+
+input:focus {
+    box-shadow: 0 0 0 2px #ff6b35;
+}
+
+button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(90deg, #ff6b35, #ff9f1c, #2ec4b6);
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+.error {
+    color: #ff4757;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.login-link {
+    margin-top: 14px;
+    text-align: center;
+    color: #fff;
+}
+
+.login-link a {
+    color: #2ec4b6;
+    text-decoration: none;
+    font-weight: 600;
+}

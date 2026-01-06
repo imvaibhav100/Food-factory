@@ -6,323 +6,56 @@
     <title>About Us - FoodFactory</title>
     <link rel="icon" type="image/x-icon" href="./Images/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" th:href="@{/css/Navigation.css}" />
     <link rel="stylesheet" th:href="@{/css/responsive.css}" />
+    <link rel="stylesheet" th:href="@{/css/about.css}" />
 </head>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-    
-    :root {
-        --primary-color: #ff6b35;
-        --secondary-color: #2ec4b6;
-        --dark-bg: #0f0f1a;
-        --card-bg: rgba(255, 255, 255, 0.05);
-        --glass-border: rgba(255, 255, 255, 0.1);
-    }
-    
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    body {
-        font-family: 'Poppins', sans-serif;
-        background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
-        color: white;
-        min-height: 100vh;
-    }
-    
-    /* Hero Section */
-    .about-hero {
-        text-align: center;
-        padding: 80px 20px 60px;
-        background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, transparent 100%);
-    }
-    
-    .about-hero h1 {
-        font-size: clamp(2.5rem, 5vw, 4rem);
-        background: linear-gradient(135deg, #ff6b35, #ff9f1c);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 20px;
-        font-weight: 800;
-    }
-    
-    .about-hero p {
-        font-size: 1.2rem;
-        color: rgba(255, 255, 255, 0.7);
-        max-width: 700px;
-        margin: 0 auto;
-        line-height: 1.8;
-    }
-    
-    /* Content Section */
-    .about-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 60px 20px;
-    }
-    
-    /* Mission & Vision Cards */
-    .cards-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        margin-bottom: 60px;
-    }
-    
-    .info-card {
-        background: var(--card-bg);
-        backdrop-filter: blur(20px);
-        border: 1px solid var(--glass-border);
-        border-radius: 20px;
-        padding: 40px;
-        transition: all 0.4s ease;
-    }
-    
-    .info-card:hover {
-        transform: translateY(-10px);
-        border-color: var(--primary-color);
-        box-shadow: 0 20px 50px rgba(255, 107, 53, 0.3);
-    }
-    
-    .info-card i {
-        font-size: 3rem;
-        color: var(--primary-color);
-        margin-bottom: 20px;
-    }
-    
-    .info-card h2 {
-        font-size: 1.8rem;
-        margin-bottom: 15px;
-        color: white;
-    }
-    
-    .info-card p {
-        color: rgba(255, 255, 255, 0.7);
-        line-height: 1.8;
-        font-size: 1rem;
-    }
-    
-    /* Contact Info Grid */
-    .contact-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
-        margin-top: 40px;
-    }
-    
-    .contact-box {
-        background: var(--card-bg);
-        backdrop-filter: blur(20px);
-        border: 1px solid var(--glass-border);
-        border-radius: 15px;
-        padding: 30px;
-        display: flex;
-        align-items: flex-start;
-        gap: 20px;
-        transition: all 0.3s ease;
-    }
-    
-    .contact-box:hover {
-        border-color: var(--secondary-color);
-        box-shadow: 0 10px 30px rgba(46, 196, 182, 0.2);
-    }
-    
-    .contact-icon {
-        width: 50px;
-        height: 50px;
-        background: linear-gradient(135deg, #ff6b35, #ff9f1c);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        color: white;
-        flex-shrink: 0;
-    }
-    
-    .contact-text h3 {
-        font-size: 1.1rem;
-        margin-bottom: 8px;
-        color: white;
-    }
-    
-    .contact-text p {
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.9rem;
-    }
-    
-    /* Values Section */
-    .values-section {
-        margin: 60px 0;
-    }
-    
-    .section-title {
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 40px;
-        background: linear-gradient(135deg, #2ec4b6, #3de0d0);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-    
-    .values-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 25px;
-    }
-    
-    .value-item {
-        background: var(--card-bg);
-        backdrop-filter: blur(20px);
-        border: 1px solid var(--glass-border);
-        border-radius: 15px;
-        padding: 30px;
-        text-align: center;
-        transition: all 0.3s ease;
-    }
-    
-    .value-item:hover {
-        transform: translateY(-5px);
-        border-color: var(--primary-color);
-    }
-    
-    .value-item i {
-        font-size: 2.5rem;
-        color: var(--primary-color);
-        margin-bottom: 15px;
-    }
-    
-    .value-item h3 {
-        font-size: 1.3rem;
-        margin-bottom: 10px;
-    }
-    
-    .value-item p {
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.95rem;
-    }
-
-    /* Testimonials Section */
-    .testimonials-section {
-        margin: 60px 0;
-    }
-
-    .testimonials-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 25px;
-    }
-
-    .testimonial-card {
-        background: var(--card-bg);
-        backdrop-filter: blur(20px);
-        border: 1px solid var(--glass-border);
-        border-radius: 15px;
-        padding: 30px;
-        position: relative;
-        transition: all 0.3s ease;
-    }
-
-    .testimonial-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--secondary-color);
-        box-shadow: 0 15px 40px rgba(46, 196, 182, 0.2);
-    }
-
-    .testimonial-card::before {
-        content: '"';
-        font-size: 4rem;
-        color: var(--primary-color);
-        opacity: 0.2;
-        position: absolute;
-        top: 10px;
-        left: 15px;
-    }
-
-    .testimonial-text {
-        margin-bottom: 20px;
-        color: rgba(255, 255, 255, 0.8);
-        line-height: 1.8;
-        font-size: 0.95rem;
-        position: relative;
-        z-index: 1;
-    }
-
-    .testimonial-author {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        padding-top: 20px;
-        border-top: 1px solid var(--glass-border);
-    }
-
-    .author-avatar {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        color: white;
-        font-weight: bold;
-    }
-
-    .author-info h4 {
-        color: white;
-        font-size: 1rem;
-        margin-bottom: 5px;
-    }
-
-    .author-info p {
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 0.85rem;
-    }
-
-    .stars {
-        color: #ffc107;
-        font-size: 0.9rem;
-        margin-bottom: 3px;
-    }
-
-    
-    /* Footer */
-    .footer {
-        background: rgba(0, 0, 0, 0.3);
-        padding: 40px 20px;
-        text-align: center;
-        margin-top: 60px;
-        border-top: 1px solid var(--glass-border);
-    }
-    
-    .footer h4 {
-        font-size: 1.5rem;
-        margin-bottom: 15px;
-        color: var(--primary-color);
-    }
-    
-    .footer p {
-        color: rgba(255, 255, 255, 0.6);
-        margin: 10px 0;
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-        .about-hero {
-            padding: 60px 20px 40px;
-        }
-        
-        .cards-grid, .contact-grid, .values-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-</style>
 <body>
-    <nav th:replace="~{Navigation::navbar()}"></nav>
+    <!-- Navbar for Logged-in Users (matches Home) -->
+    <nav th:if="${isLoggedIn}" class="navbar navbar-logged-in">
+		<div class="navbar-logo">
+			<i class="fas fa-utensils"></i>
+			<span>FoodFactory</span>
+		</div>
+		<ul class="navbar-menu">
+			<li><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+			<li><a href="/user/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+			<li><a href="/user/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a></li>
+			<li><a href="/user/about"><i class="fas fa-info-circle"></i> About</a></li>
+		</ul>
+		<div class="navbar-user-menu">
+			<span class="navbar-user-info">
+				<i class="fas fa-user-circle"></i> <span th:text="${name}">User</span>
+			</span>
+			<a href="/user/logout" class="navbar-logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+		</div>
+
+        <button class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="/user/home"><i class="fas fa-home"></i> Home</a>
+            <a href="/user/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="/user/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a>
+            <a href="/user/about"><i class="fas fa-info-circle"></i> About</a>
+            <a href="/user/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+
+		<!-- Mobile Menu Overlay -->
+		<div class="mobile-menu" id="mobileMenu">
+			<a href="/home"><i class="fas fa-home"></i> Home</a>
+			<a href="/products"><i class="fas fa-utensils"></i> Products</a>
+			<a href="/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a>
+			<a href="/about"><i class="fas fa-info-circle"></i> About</a>
+			<a href="/login"><i class="fas fa-sign-in-alt"></i> Log In</a>
+		</div>
+	</nav>
     
     <!-- Hero Section -->
     <div class="about-hero">
@@ -505,5 +238,7 @@
         <p>Explore our wide range of vegetarian products designed to delight your taste buds.</p>
         <p>© Copyright 2025 FoodFactory. All Rights Reserved.</p>
     </div>
+
+    <script th:src="@{/JavaScript/home.js}"></script>
 </body>
 </html>

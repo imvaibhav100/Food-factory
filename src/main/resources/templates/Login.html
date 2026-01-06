@@ -6,13 +6,58 @@
 	<title>FoodFactory - Login</title>
 	<link rel="icon" type="image/x-icon" href="./img/b.png">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-	<link rel="stylesheet" href="" th:href="@{/css/Navigation.css}" />
 	<link rel="stylesheet" href="" th:href="@{/css/Login.css}" />
 	<link rel="stylesheet" href="" th:href="@{/css/responsive.css}" />
 </head>
 
-<body style="padding-top: 70px;">
-	<nav th:replace="~{Navigation::navbar()}">
+<body>
+	<!-- Navbar for Logged-in Users (matches Home) -->
+	<nav th:if="${isLoggedIn}" class="navbar navbar-logged-in">
+		<div class="navbar-logo">
+			<i class="fas fa-utensils"></i>
+			<span>FoodFactory</span>
+		</div>
+		<ul class="navbar-menu">
+			<li><a href="/user/home"><i class="fas fa-home"></i> Home</a></li>
+			<li><a href="/user/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+			<li><a href="/user/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a></li>
+			<li><a href="/user/about"><i class="fas fa-info-circle"></i> About</a></li>
+		</ul>
+		<div class="navbar-user-menu">
+			<span class="navbar-user-info">
+				<i class="fas fa-user-circle"></i> <span th:text="${name}">User</span>
+			</span>
+			<a href="/user/logout" class="navbar-logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+		</div>
+	</nav>
+
+	<!-- Navbar for Guests (matches Home) -->
+	<nav th:unless="${isLoggedIn}" class="navbar">
+		<div class="navbar-logo">
+			<i class="fas fa-utensils"></i>
+			<span>FoodFactory</span>
+		</div>
+		<ul class="navbar-menu">
+			<li><a href="/home"><i class="fas fa-home"></i> Home</a></li>
+			<li><a href="/products"><i class="fas fa-utensils"></i> Products</a></li>
+			<li><a href="/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a></li>
+			<li><a href="/about"><i class="fas fa-info-circle"></i> About</a></li>
+			<li><a href="/login"><i class="fas fa-sign-in-alt"></i> Log In</a></li>
+		</ul>
+
+		<button class="hamburger" onclick="toggleMenu()">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+
+		<div class="mobile-menu" id="mobileMenu">
+			<a href="/home"><i class="fas fa-home"></i> Home</a>
+			<a href="/products"><i class="fas fa-utensils"></i> Products</a>
+			<a href="/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a>
+			<a href="/about"><i class="fas fa-info-circle"></i> About</a>
+			<a href="/login"><i class="fas fa-sign-in-alt"></i> Log In</a>
+		</div>
 	</nav>
 	<div class="LoginContainer">
 		<div class="admin">
@@ -68,21 +113,7 @@
 		</div>
 	</div>
 </body>
-
-<script>
-function togglePassword(inputId, eyeId) {
-	var input = document.getElementById(inputId);
-	var eye = document.getElementById(eyeId);
-	if (input.type === "password") {
-		input.type = "text";
-		eye.classList.remove("fa-eye");
-		eye.classList.add("fa-eye-slash");
-	} else {
-		input.type = "password";
-		eye.classList.remove("fa-eye-slash");
-		eye.classList.add("fa-eye");
-	}
-}
-</script>
+<script th:src="@{/JavaScript/home.js}"></script>
+<script th:src="@{/JavaScript/login.js}"></script>
 
 </html>

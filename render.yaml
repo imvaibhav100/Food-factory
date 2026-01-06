@@ -4,23 +4,36 @@ services:
     runtime: docker
     region: oregon
     plan: free
+    healthCheckPath: /
     envVars:
-      - key: DATABASE_URL
-        scope: run
-        value: ${DATABASE_URL}
-      - key: DB_USER
-        scope: run
-        value: ${DB_USER}
-      - key: DB_PASSWORD
-        scope: run
-        value: ${DB_PASSWORD}
       - key: PORT
-        scope: run
         value: 8080
+      - key: DB_HOST
+        fromDatabase:
+          name: foodfactory-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: foodfactory-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: foodfactory-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: foodfactory-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: foodfactory-db
+          property: password
+      - key: JAVA_OPTS
+        value: "-Xmx512m -XX:+UseContainerSupport"
 
 databases:
   - name: foodfactory-db
     databaseName: foodfactory
-    user: postgres
+    user: foodfactory_user
     region: oregon
     plan: free
