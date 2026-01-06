@@ -56,6 +56,35 @@
 			<a href="/login"><i class="fas fa-sign-in-alt"></i> Log In</a>
 		</div>
 	</nav>
+    <nav th:unless="${isLoggedIn}" class="navbar">
+		<div class="navbar-logo">
+			<i class="fas fa-utensils"></i>
+			<span>FoodFactory</span>
+		</div>
+		<ul class="navbar-menu">
+			<li><a href="/home"><i class="fas fa-home"></i> Home</a></li>
+			<li><a href="/products"><i class="fas fa-utensils"></i> Products</a></li>
+			<li><a href="/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a></li>
+			<li><a href="/about"><i class="fas fa-info-circle"></i> About</a></li>
+			<li><a href="/login"><i class="fas fa-sign-in-alt"></i> Log In</a></li>
+		</ul>
+
+		<!-- Hamburger Menu Button -->
+		<button class="hamburger" onclick="toggleMenu()">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+
+		<!-- Mobile Menu Overlay -->
+		<div class="mobile-menu" id="mobileMenu">
+			<a href="/home"><i class="fas fa-home"></i> Home</a>
+			<a href="/products"><i class="fas fa-utensils"></i> Products</a>
+			<a href="/location"><i class="fas fa-map-marker-alt"></i> Locate Us</a>
+			<a href="/about"><i class="fas fa-info-circle"></i> About</a>
+			<a href="/login"><i class="fas fa-sign-in-alt"></i> Log In</a>
+		</div>
+	</nav>
     
     <!-- Hero Section -->
     <div class="about-hero">
