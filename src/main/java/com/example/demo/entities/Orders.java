@@ -23,7 +23,7 @@ public class Orders {
 	private double totalAmmout;
 
 	@ManyToOne
-	@JoinColumn(name = "user_u_id")
+	@JoinColumn(name = "user_id", referencedColumnName = "u_id")
 	private User user;
 
 	public Date getOrderDate() {
