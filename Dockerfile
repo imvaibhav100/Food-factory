@@ -19,5 +19,5 @@ EXPOSE 8080
 
 ENV PORT=8080
 
-# JVM Optimizations for faster startup on limited resources
-ENTRYPOINT ["java", "-Xmx512m", "-XX:+TieredCompilation", "-XX:TieredStopAtLevel=1", "-jar", "app.jar"]
+# JVM Optimizations and Java 17 module flags for Tomcat compatibility
+ENTRYPOINT ["java", "-Xmx512m", "-XX:+TieredCompilation", "-XX:TieredStopAtLevel=1", "--add-opens", "java.base/java.io=ALL-UNNAMED", "--add-opens", "java.base/java.lang=ALL-UNNAMED", "--add-opens", "java.base/sun.nio.ch=ALL-UNNAMED", "-jar", "app.jar"]
