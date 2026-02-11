@@ -8,32 +8,13 @@ services:
     envVars:
       - key: PORT
         value: 8080
-      - key: DB_HOST
-        fromDatabase:
-          name: foodfactory-db
-          property: host
-      - key: DB_PORT
-        fromDatabase:
-          name: foodfactory-db
-          property: port
-      - key: DB_NAME
-        fromDatabase:
-          name: foodfactory-db
-          property: database
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: DATABASE_URL
+        value: jdbc:mysql://gateway01.ap-southeast-1.prod.aws.tidbcloud.com:4000/test?useSSL=true&serverTimezone=UTC
       - key: DB_USER
-        fromDatabase:
-          name: foodfactory-db
-          property: user
+        value: 3AHxi4bKkwrCqvA.root
       - key: DB_PASSWORD
-        fromDatabase:
-          name: foodfactory-db
-          property: password
+        value: GxgBEyntx5OqzQ5t
       - key: JAVA_OPTS
-        value: "-Xmx512m -XX:+UseContainerSupport"
-
-databases:
-  - name: foodfactory-db
-    databaseName: foodfactory
-    user: foodfactory_user
-    region: oregon
-    plan: free
+        value: "-Xmx512m -XX:+UseContainerSupport -Dspring.profiles.active=prod"

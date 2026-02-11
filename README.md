@@ -53,14 +53,59 @@ FoodFactory/
    git clone https://github.com/imvaibhav100/Foodfactory.git
    cd Foodfactory
    ```
-2. **Configure the database:**
-   - Edit `src/main/resources/application.properties` with your MySQL credentials.
+
+2. **Setup MySQL Database:**
+   - Install and start MySQL server on your local machine
+   - Create a database (it will be auto-created if it doesn't exist):
+     ```sql
+     CREATE DATABASE foodfactory;
+     ```
+   - Update MySQL credentials in `src/main/resources/application-local.properties` if needed:
+     ```properties
+     spring.datasource.username=root
+     spring.datasource.password=YourPassword
+     ```
+
 3. **Build and run the project:**
+   
+   **Option 1: Using Maven (Recommended for local development)**
    ```bash
    ./mvnw spring-boot:run
    ```
+   
+   **Option 2: Using IDE**
+   - Run `FoodFactoryApplication.java` as a Spring Boot Application
+   
+   **Note:** The application is configured to use local MySQL by default. For production deployment on Render (Oracle MySQL Cloud), set environment variable `SPRING_PROFILES_ACTIVE=prod`
+
 4. **Open in browser:**
    - Visit [http://localhost:8080](http://localhost:8080)
+
+---
+
+## 🗄️ Database Configuration
+
+This project uses **MySQL** (TiDB Cloud compatible) for both local development and production:
+
+### **Local Development (Default)**
+- **File:** `application.properties`
+- **Database:** Local MySQL Server (localhost:3306)
+- **Credentials:** Update in `application.properties`
+  ```properties
+  spring.datasource.username=root
+  spring.datasource.password=Mydatabase@2006
+  ```
+
+### **Production - Render (TiDB Cloud)**
+- **File:** `application-prod.properties`
+- **Activation:** Set `SPRING_PROFILES_ACTIVE=prod` on Render
+- **Required Environment Variables:**
+  ```bash
+  SPRING_PROFILES_ACTIVE=prod
+  DATABASE_URL=jdbc:mysql://3AHxi4bKkwrCqvA.root:password@gateway01.ap-southeast-1.prod.aws.tidbcloud.com:4000/test
+  DB_USER=3AHxi4bKkwrCqvA.root
+  DB_PASSWORD=GxgBEyntx5OqzQ5t
+  ```
 
 ---
 
